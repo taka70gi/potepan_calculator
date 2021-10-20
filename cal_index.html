@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+	<html lang="en">
+	  <head>
+		<meta charset="utf-8">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="cal_main.css">
+		<title>電卓</title>
+	  </head>
+ 
+	  <body>
+		<input type="text" name="cal_text" id="text_layout"/>
+		<div class="cal_layout">
+			<div class="row_layout">
+				<button onclick="js_input('7')">7</button>
+				<button onclick="js_input('8')">8</button>
+				<button onclick="js_input('9')">9</button> 
+				<button onclick="js_input('+')">+</button>     
+			</div>
+			<div class="row_layout">
+				<button onclick="js_input('4')">4</button>
+				<button onclick="js_input('5')">5</button>
+				<button onclick="js_input('6')">6</button>
+				<button onclick="js_input('-')">-</button> 
+			</div>
+			<div class="row_layout">
+				<button onclick="js_input('1')">1</button>
+				<button onclick="js_input('2')">2</button>
+				<button onclick="js_input('3')">3</button> 
+				<button onclick="js_input('*')">*</button> 
+			</div>
+			<div class="row_layout">
+				<button onclick="js_input('0')">0</button>
+				<button onclick="js_input('00')">00</button>
+				<button onclick="js_input('.')">.</button> 
+				<button onclick="js_input('/')">/</button> 
+			</div>
+			<div class="row_layout">
+				<button id="AC">AC</button> 
+				<button id="equal">=</button> 
+			</div>
+		</div>
+		
+		<script>
+			function js_input(button_str) {
+				let flg;//true>数字　false>符号
+				let TextBox = document.getElementById('text_layout');
+				let right = "";
+				
+				//数字・符号判断
+				if(button_str === '+' || button_str === '-' || button_str === '*' || button_str === '/' || button_str === '.')
+				{
+					flg = false;//符号    
+				}
+				else
+				{
+					flg = true;//数字
+				}
+				
+				if(TextBox.value === '0' || TextBox.value === '00' || TextBox.value === '')
+				{
+					//先頭は数字のみ記載
+					if(flg === true)
+					{
+						TextBox.value = button_str;
+					}
+				}
+				else if(TextBox.value.length === 1)
+				{
+					//2桁目は符号のみ記載
+					if(flg === false)
+					{
+						TextBox.value += button_str;   
+					}    
+				}
+				else
+				{
+					//右から一文字が数字か符号か判断
+					right = TextBox.value.substring(TextBox.value.length - 1);
+					
+					if(right === '+' || right === '-' || right === '*' || right === '/' || right === '.')
+					{
+						if(flg === true)
+						{
+							TextBox.value += button_str;     
+						}    
+					}
+					else
+					{
+						if(flg === false)
+						{
+							TextBox.value += button_str;     
+						} 
+					}   
+				}
+			}
+		</script>
+		<script type="text/javascript" src="cal_main.js"></script>
+	  </body>
+	</html>
+	

@@ -1,0 +1,21 @@
+button{
+	width: 60px;
+	margin: 1px;
+}
+button#AC{
+	width:122px;
+}
+button#equal{
+	width:122px;
+}
+#text_layout {
+	width: 240px;
+	background-color: #000;
+	color: #fff;
+}
+.cal_layout{
+	width: 400px;
+}
+.row_layout{
+	display: flex;
+}
