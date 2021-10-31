@@ -10,7 +10,7 @@ button#equal{
 }
 #text_layout {
 	width: 240px;
-	background-color: #000;
+	background-color: black;
 	color: #fff;
 }
 .cal_layout{
